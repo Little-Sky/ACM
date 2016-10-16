@@ -1,0 +1,12 @@
+Oct 16;
+
+Finished: A, B, D-small
+
+Rank: 281;
+Score: 47;
+
+More practices are needed on DP.
+
+Question C is still buggy. 
+It seems to suggest something wrong happened with memory allocation. 
+I have checked re-initialization, i/o. vairable names, but no clue found.
