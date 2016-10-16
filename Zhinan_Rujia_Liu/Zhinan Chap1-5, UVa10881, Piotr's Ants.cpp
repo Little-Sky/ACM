@@ -9,7 +9,16 @@ struct Ant{
   }
 }before[maxn], after[maxn];
 
+/* The "before" states contains input order (id), which is needed for the final output.
+   If we separate the whole process into two stages, then at the end, we only have the position.
+   Hence we need an "order" array, which takes input (id) and output the sorted position.
+   
+   Before   -->    After   -->  Output
+     |     order     |
+     id     -->  pos rank*/
 int order[maxn];
+
+//Rujia suggests to use an const array {"L", "Turning", "R"} to simplify the output: [Ant.d +1]
 
 int main(){
   int kase, len, t, n;
