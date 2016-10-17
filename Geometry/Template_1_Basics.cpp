@@ -59,7 +59,7 @@ Vector Rotate(Vector A, double rad) {
   return Vector(A.x*cos(rad) - A.y*sin(rad), A.x*sin(rad) + A.y*cos(rad));
 }
 
-//单位法向量
+//单位法向量, make sure |A| != 0 before called
 Vector Normal (Vector A) {
   double L = Length(A);
   return Vector(-A.y/L, A.x/L);
