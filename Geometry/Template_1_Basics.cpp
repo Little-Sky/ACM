@@ -13,18 +13,20 @@ Vector operator - (Vector A, Vector B) { return Point(A.x-B.x, A.y-B.y); }
 Vector operator * (Vector A, double p) { return Point(p*A.x, p*A.y); }
 Vector operator / (Vector A, double p) { return Point(A.x/p, A.y/p); }
 
+//sort()
 bool operator < (const Point& a, const Point& b){
   return a.x < b.x || (a.x == b.x && a.y < b.y);
+}
+
+//cnt = unique(V, V + size) - V;
+bool operator == (const Point& a, const Point& b){
+  return dcmp(a.x-b.x) == 0 && dcmp(a.y-b.y) == 0;
 }
 
 const double eps = 1e-10;
 int dcmp(double x){
   if (fabs(x) < eps) return 0; 
   else return x<0 ? -1 : 1;
-}
-
-bool operator == (const Point& a, const Point& b){
-  return dcmp(a.x-b.x) == 0 && dcmp(a.y-b.y) == 0;
 }
 
 //turning angle: [0, 2*PI)
