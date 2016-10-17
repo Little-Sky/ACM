@@ -7,12 +7,6 @@ struct Point{
   void read() { scanf("%lf%lf", &x, &y); }
 };
 
-inline Point get_point(){
-  double x, y;
-  cin >> x >> y;
-  return Point(x, y);
-}
-
 typedef Point Vector;
 Vector operator + (Vector A, Vector B) { return Point(A.x+B.x, A.y+B.y); }
 Vector operator - (Vector A, Vector B) { return Point(A.x-B.x, A.y-B.y); }
