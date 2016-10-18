@@ -1,3 +1,9 @@
+/*
+  Runtime Error.
+  Works well on my computer and on CodeForces on uDebug data.
+  No clue on what's going on.
+*/
+
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
