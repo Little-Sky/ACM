@@ -27,3 +27,8 @@ double SQRT(double x){
   for (int j=0; j<n; j++) B[j].read();
   for (int i=1; i<m; i++) len1 += Length(A[i]-A[i-1]);
   for (int j=1; j<m; j++) len2 += Length(B[j]-B[j-1]);
+
+
+
+4. Carefully choose the place to declare local variables could increase readability.
+   And, helps to remind you initialization.
