@@ -18,3 +18,12 @@ double SQRT(double x){
   if (dcmp(x) < 0) x = 0;
   return sqrt(x);
 }
+
+
+
+3. Be very careful when copy-paste i,j or such things. 
+   They may create super-super tricky bugs.
+  for (int i=0; i<m; i++) A[i].read();
+  for (int j=0; j<n; j++) B[j].read();
+  for (int i=1; i<m; i++) len1 += Length(A[i]-A[i-1]);
+  for (int j=1; j<m; j++) len2 += Length(B[j]-B[j-1]);
