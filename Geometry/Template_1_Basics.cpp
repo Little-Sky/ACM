@@ -13,6 +13,11 @@ Vector operator - (Vector A, Vector B) { return Point(A.x-B.x, A.y-B.y); }
 Vector operator * (Vector A, double p) { return Point(p*A.x, p*A.y); }
 Vector operator / (Vector A, double p) { return Point(A.x/p, A.y/p); }
 
+double Dot(Vector A, Vector B) { return A.x*B.x + A.y*B.y; }
+double Length(Vector A) { return sqrt(Dot(A, A)); }
+double Cross(Vector A, Vector B) { return A.x*B.y - A.y*B.x; } //2*size of triangle
+double Angle(Vector A, Vector B) { return fabs(atan2(Cross(A, B), Dot(A, B)));}
+
 const double eps = 1e-10;
 int dcmp(double x){
   if (fabs(x) < eps) return 0; 
@@ -31,11 +36,6 @@ bool operator == (const Point& a, const Point& b){
 
 //turning angle: [0, 2*PI)
 double angle = atan2(y, x);
-
-double Dot(Vector A, Vector B) { return A.x*B.x + A.y*B.y; }
-double Length(Vector A) { return sqrt(Dot(A, A)); }
-double Cross(Vector A, Vector B) { return A.x*B.y - A.y*B.x; } //2*size of triangle
-double Angle(Vector A, Vector B) { return fabs(atan2(Cross(A, B), Dot(A, B)));}
 
 double ACOS(double x){
   if (!dcmp(1-x)) x = 1;
