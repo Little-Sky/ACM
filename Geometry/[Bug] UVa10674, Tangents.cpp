@@ -1,6 +1,6 @@
 /*
   Runtime Error.
-  Works well on my computer and on CodeForces on uDebug data.
+  Works well on my computer and on CodeForces online compiler using uDebug data.
   No clue on what's going on.
 */
 
