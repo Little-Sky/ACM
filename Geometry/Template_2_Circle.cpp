@@ -99,7 +99,6 @@ int getTangents(Circle A, Circle B, Point* a, Point* b){
   return cnt;
 }
 
-
 //外切圆
 Circle CircumscribedCircle(Point p1, Point p2, Point p3) {
   double Bx = p2.x-p1.x, By = p2.y-p1.y;
