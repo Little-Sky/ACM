@@ -94,7 +94,7 @@ bool SegmentProperIntersection (Point a1, Point a2, Point b1, Point b2){
          c3 = Cross (b2-b1, a1-b1), c4 = Cross (b2-b1, a2-b1);
   return dcmp(c1) * dcmp(c2) < 0 && dcmp(c3) * dcmp(c4) < 0;
 }
-//判断某点 P 是否在另一线段 a1-a2 上（端点在另一个线段上）
+//判断某点 P 是否在另一（不含端点）线段 a1-a2 上。端点重合需要另判
 bool OnSegment(Point p, Point a1, Point a2){
   return dcmp(Cross(a1-p, a2-p)) == 0 && dcmp(Dot(a1-p, a2-p)) < 0;
 }
