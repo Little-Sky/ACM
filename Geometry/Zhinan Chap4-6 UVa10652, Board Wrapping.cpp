@@ -30,27 +30,24 @@ int dcmp(double x){
   else return x<0 ? -1 : 1;
 }
 
-//sort()
 bool operator < (const Point& a, const Point& b){
   return a.x < b.x || (a.x == b.x && a.y < b.y);
 }
-//cnt = unique(V, V + size) - V;
+
 bool operator == (const Point& a, const Point& b){
   return dcmp(a.x-b.x) == 0 && dcmp(a.y-b.y) == 0;
 }
 
 double Area2(Point A, Point B, Point C) { return Cross(B-A, C-A); }
-//signed area; obey right-hand rule -> cross > 0
 
-//逆时针转角
 Vector Rotate(Vector A, double rad) {
   return Vector(A.x*cos(rad) - A.y*sin(rad), A.x*sin(rad) + A.y*cos(rad));
 }
 
-//多边形的有向面积
+
 double PolygonArea (Point* p, int n){
   double area = 0;
-  for (int i = 1; i < n-1; i++)//用 p[0] 划分省去 i=n-1 的特殊处理 (下一个点p[n]其实是p[0])
+  for (int i = 1; i < n-1; i++)
     area += Cross(p[i]-p[0], p[i+1]-p[0]);
   return area/2;
 }
@@ -69,8 +66,7 @@ int ConvexHull(Point* p, int& n, Point* ch){
     ch[m++] = p[i];
   }
   if (n > 1) m--;
-  //ch.resize(m);
-  return m; //number of points on convex hull
+  return m; 
 }
 
 Point p[4000];
