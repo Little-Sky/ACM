@@ -58,7 +58,7 @@ int ConvexHull(Point* p, int& n, Point* ch){
     ch[m++] = p[i];
   }
   if (n > 1) m--;
-  return m; //number of points on convex hull
+  return m; 
 }
 
 Point p[10010];
@@ -75,15 +75,18 @@ int main(){
     for (int i=0; i<n; i++)
       totalx += p[i].x, totaly += p[i].y;
     m = ConvexHull(p, n, ch);
-    // printf("m is %d\n", m);
     
-    //Though the rest code could handle the case for m == 2, but for m == 1, getline() is undefined
+    
+    /*Though the rest code could handle the case for m == 2, but for m == 1, getline() is undefined
+      Take degenerated cases seriously!
+      
+      CuxHull -> a line / a point / empty points
+      Check them! When orgranizing your code.*/
     if (m <= 2) shortest = 0;
     else for (int i=0; i<m; i++){
       double a, b, c;
       getLineGeneralEquation(ch[i], ch[(i+1)%m], a, b, c);
       double cur = fabs(a*totalx + b*totaly + c*n) / sqrt(a*a+b*b);
-      // printf("%lf, %lf\n", fabs(a*totalx + b*totaly + c*n), sqrt(a*a+b*b));
       shortest = min(cur, shortest);
     }
     printf("Case #%d: %.3lf\n", kase, shortest/n);
