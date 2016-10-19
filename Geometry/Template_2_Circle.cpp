@@ -99,3 +99,23 @@ int getTangents(Circle A, Circle B, Point* a, Point* b){
   return cnt;
 }
 
+
+//外切圆
+Circle CircumscribedCircle(Point p1, Point p2, Point p3) {
+  double Bx = p2.x-p1.x, By = p2.y-p1.y;
+  double Cx = p3.x-p1.x, Cy = p3.y-p1.y;
+  double D = 2*(Bx*Cy-By*Cx);
+  double cx = (Cy*(Bx*Bx+By*By) - By*(Cx*Cx+Cy*Cy))/D + p1.x;
+  double cy = (Bx*(Cx*Cx+Cy*Cy) - Cx*(Bx*Bx+By*By))/D + p1.y;
+  Point p = Point(cx, cy);
+  return Circle(p, Length(p1-p));
+}
+
+//内接圆
+Circle InscribedCircle(Point p1, Point p2, Point p3) {
+  double a = Length(p2-p3);
+  double b = Length(p3-p1);
+  double c = Length(p1-p2);
+  Point p = (p1*a + p2*b + p3*c) / (a+b+c);
+  return Circle(p, DistanceToLine(p, p1, p2));
+}
