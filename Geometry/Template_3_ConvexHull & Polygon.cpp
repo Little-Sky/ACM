@@ -49,7 +49,7 @@ int Dist2(const Point& A, const Point& B) {
 
 // 旋转卡壳(Rotating Calipers): O(n)
 // 返回点集直径  的  平方
-// points 是多面体，p是空array，用来存convex hull
+// p 是多面体，ch是空array，用来存convex hull
 int Diameter2(Point* p, int n, Point* ch) {
   int m = ConvexHull(p, n, ch); //m is size of ch
   if(m == 1) return 0;
