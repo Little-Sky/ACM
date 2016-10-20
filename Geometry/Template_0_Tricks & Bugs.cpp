@@ -32,3 +32,17 @@ double SQRT(double x){
 
 4. Carefully choose the place to declare local variables could increase readability.
    And, helps to remind you initialization.
+
+     
+     
+5. //prints k digits
+if (dcmp(ans + 5e-(k+1)) == 0){
+  printf("0\n");    //avoid -000499 -> -0.00
+}else if (dcmp(ans) > 0){
+  printf("%.klf", ans + eps); //avoid 0.004999 -> 0.01
+}else{
+  printf("%.klf", ans - eps);
+}
+
+double <= 1e308
+连乘如果太大需换乘对数和
