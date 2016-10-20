@@ -57,16 +57,12 @@ int Diameter2(Point* p, int n, Point* ch) {
   ch[m+1] = ch[0]; // 免得取模
   int ans = 0;
   for(int u = 0, v = 1; u < m; u++) {
-    // 一条直线贴住边ch[u]-ch[u+1]
+    //u为起点，v是终点; u->u+1与v->v+1转角>=PI是判定对踵点；平行时需特判
     for(;;) {
-      // 当Area(p[u], p[u+1], p[v+1]) <= Area(p[u], p[u+1], p[v])时停止旋转
-      // 即Cross(p[u+1]-p[u], p[v+1]-p[u]) - Cross(p[u+1]-p[u], p[v]-p[u]) <= 0
-      // 根据Cross(A,B) - Cross(A,C) = Cross(A,B-C)
-      // 化简得Cross(p[u+1]-p[u], p[v+1]-p[v]) <= 0
       int diff = Cross(ch[u+1]-ch[u], ch[v+1]-ch[v]);
       if(diff <= 0) {
-        ans = max(ans, Dist2(ch[u], ch[v])); // u和v是对踵点
-        if(diff == 0) ans = max(ans, Dist2(ch[u], ch[v+1])); // diff == 0时u和v+1也是对踵点
+        ans = max(ans, Dist2(ch[u], ch[v]));
+        if(diff == 0) ans = max(ans, Dist2(ch[u], ch[v+1]));
         break;
       }
       v = (v + 1) % m;
