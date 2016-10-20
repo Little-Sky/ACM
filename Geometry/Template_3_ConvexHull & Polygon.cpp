@@ -22,7 +22,7 @@ void getLineGeneralEquation(Point p1, Point p2, double& a, double& b, double& c)
     c = p2.x * p1.y - p1.x * p2.y;
 }
 
-// 点集凸包 O(nlogn)
+// 点集凸包 O(nlogn)，输出 逆时针
 // 注意：函数执行完之后输入点的顺序被破坏
 // 如果不希望在凸包的边上有输入点，把两个 <= 改成<
 int ConvexHull(Point* p, int& n, Point* ch){
