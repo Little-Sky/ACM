@@ -70,3 +70,53 @@ int Diameter2(Point* p, int n, Point* ch) {
   }
   return ans;
 }
+
+
+//半平面交,如果结果可能是开放区间，可以在外面套一个大框，加四条最大的线，最后再去掉
+struct Line{
+  Point P;
+  Vector v;
+  double ang;
+  Line() {}
+  //Initialize 时第二个input是 向量 不是点!
+  Line(Point P, Vector v):P(P), v(v) { ang = atan2(v.y, v.x); }
+  bool operator < (const Line& L) const {
+    return ang < L.ang;
+  }
+};
+
+// O(log n)半平面交
+// 点p在有向直线L的左边（线上不算）
+// 顺时针输入要用OnRight
+bool OnLeft (const Line& L, const Point& p){
+  return dcmp(Cross(L.v, p-L.P)) > 0;
+}
+//半平面交的主过程
+Point HPIp[maxn];
+Line HPIq[maxn];
+int HalfplaneIntersection (Line* L, int n, Point* poly){
+  sort (L, L+n);            //按极角排序
+  int first, last;          //双端队列的第一个元素和最后一个元素的下标
+  Point * p = HPIp; //p[i] 为 q[i] 和 q[i+1] 的交点
+  Line * q = HPIq;   //双端队列
+  q[first=last=0] = L[0];   //双端队列初始化为只有一个半平面 L[0]
+  for (int i=1; i<n; i++){
+    while (first < last && !OnLeft(L[i], p[last-1])) last--;
+    while (first < last && !OnLeft(L[i], p[first])) first++;
+    q[++last] = L[i];
+    if (fabs(Cross(q[last].v, q[last-1].v)) < eps){
+      //两向量平行且同向，取内侧的一个
+      last --;
+      if (OnLeft(q[last], L[i].P)) q[last] = L[i];
+    }
+    if (first < last) p[last-1] = GetLineIntersection (q[last-1].P, q[last-1].v, q[last].P, q[last].v);
+  }
+  while (first < last && !OnLeft(q[first], p[last-1])) last--;//删除无用平面
+  if (last - first <= 1) return 0;                //空集
+  p[last] = GetLineIntersection (q[last].P, q[last].v, q[first].P, q[first].v);  
+  
+  int m = 0;
+  for (int i=first; i<=last; i++) poly[m++] = p[i];
+  return m;
+}
+
