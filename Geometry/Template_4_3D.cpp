@@ -24,4 +24,4 @@ Vector3 operator / (Vector3 A, double p){
 // Plane (p0, N), N is the normal vector pointing away from the halfspace;
 // point on plane : Dot (n, p-p0) = 0
 
-
+double Dot(Vector3 A, Vector3 B) { return A.x*B.x+}
