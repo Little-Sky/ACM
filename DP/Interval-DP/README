@@ -1,0 +1,11 @@
+http://vjudge.net/contest/22957#status/
+
+Interval DP
+
+Basically two cases:
+1. c = a b
+2. c = ( a ), sometimes ( a
+
+Remark:
+Discuss what interval x, y means before coding
+(x, y) [x, y), (x, y], [x, y]
