@@ -3,8 +3,8 @@ Interval DP (A, F broken link)
 http://vjudge.net/contest/22957#status/
 
 Basically two cases:
-1. c = a b
-2. c = ( a ), sometimes ( a
+1. c = a b                        dp[x][y] = min (dp[x][y], cal(x, k) + cal(k+1, y));
+2. c = ( a ), sometimes ( a       dp[x][y] = min (dp[x][y], num[x] + cal(x+1, y));
 
 Remark:
 Discuss what interval x, y means before coding
