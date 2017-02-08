@@ -3,7 +3,13 @@
 
 #include <cstdio>
 #include <cmath>
-#include "macro.h"
+using namespace std;
+
+typedef double Flt;
+
+const Flt EPS = 1e-8;
+const Flt INF = 1e32;
+const Flt PI  = acos (-1);
 
 struct Point{
     Flt x, y, z;
