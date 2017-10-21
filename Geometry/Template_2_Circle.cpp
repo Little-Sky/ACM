@@ -53,7 +53,8 @@ int getCircleCircleIntersection(Circle C1, Circle C2, vector<Point>& sol){
   return 2;
 }
 
-//Template unchecked!
+// Template unchecked!
+// 求过一定点圆的切线
 int getTangents(Point p, Circle C, Vector* v){ //切线向量
   Vector u = C.o - p;
   double dist = Length(u);
@@ -69,7 +70,8 @@ int getTangents(Point p, Circle C, Vector* v){ //切线向量
   }
 }
 
-//a[i], b[i] 分别是第i条切线在圆A和圆B上的切点; size: 4; 6 cases, return -1 to 4
+// 求两个圆的公切线
+// a[i], b[i] 分别是第i条切线在圆A和圆B上的切点; size: 4; 6 cases, return -1 to 4
 int getTangents(Circle A, Circle B, Point* a, Point* b){
   int cnt = 0;
   // if (A.r < B.r) { swap(A, B); swap(a, b); }
