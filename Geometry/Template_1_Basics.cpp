@@ -116,5 +116,6 @@ struct Line {
   Vector v;
   Point p;
   Line(Vector v, Point p):v(v), p(p) {}
-  Line(){v = Point(0,0), p = Point(0,0);} 
+  Line(){v = Point(0,0), p = Point(0,0);}
+  Point point(double t) { return p + v * t; }
 };
